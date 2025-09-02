@@ -3,8 +3,148 @@
 
 openapi: 3.0.3
 info:
-    title: ""
+    title: Hello API
     version: 0.0.1
-paths: {}
+paths:
+    /hello:
+        get:
+            tags:
+                - Hello
+            operationId: Hello_GetHello
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/BaseResult'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+        post:
+            tags:
+                - Hello
+            operationId: Hello_SaveHello
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/SaveHelloRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/BaseResult'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+        delete:
+            tags:
+                - Hello
+            operationId: Hello_DeleteHello
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/BaseResult'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /hello/list:
+        post:
+            tags:
+                - Hello
+            operationId: Hello_ListHello
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/ListHelloRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/BaseResultArray'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
 components:
-    schemas: {}
+    schemas:
+        BaseResult:
+            type: object
+            properties:
+                success:
+                    type: boolean
+                error:
+                    type: string
+                errCode:
+                    type: string
+                data:
+                    $ref: '#/components/schemas/GoogleProtobufAny'
+            description: 对象型的应答
+        BaseResultArray:
+            type: object
+            properties:
+                success:
+                    type: boolean
+                error:
+                    type: string
+                errCode:
+                    type: string
+                data:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/GoogleProtobufAny'
+            description: 数组型的应答
+        GoogleProtobufAny:
+            type: object
+            properties:
+                '@type':
+                    type: string
+                    description: The type of the serialized message.
+            additionalProperties: true
+            description: Contains an arbitrary serialized message along with a @type that describes the type of the serialized message.
+        ListHelloRequest:
+            type: object
+            properties: {}
+        SaveHelloRequest:
+            type: object
+            properties: {}
+        Status:
+            type: object
+            properties:
+                code:
+                    type: integer
+                    description: The status code, which should be an enum value of [google.rpc.Code][google.rpc.Code].
+                    format: int32
+                message:
+                    type: string
+                    description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the [google.rpc.Status.details][google.rpc.Status.details] field, or localized by the client.
+                details:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/GoogleProtobufAny'
+                    description: A list of messages that carry the error details.  There is a common set of message types for APIs to use.
+            description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+tags:
+    - name: Hello

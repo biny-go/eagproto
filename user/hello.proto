@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "user/api;api";
+option java_multiple_files = true;
+option java_package = "api";
+
+import "google/api/annotations.proto";
+import "common/common.proto"; // --proto_path=loong路径/proto/common/common.proto  proto文件包名+结构体：common.BaseResult
+
+service Hello {
+	rpc SaveHello (SaveHelloRequest) returns (common.BaseResult) {
+		option (google.api.http) = {
+			post: "/hello"
+			body: "*"
+		};
+	};
+	rpc DeleteHello (DeleteHelloRequest) returns (common.BaseResult) {
+		option (google.api.http) = {
+			delete: "/hello"
+		};
+	};
+	rpc GetHello (GetHelloRequest) returns (common.BaseResult) {
+		option (google.api.http) = {
+			get: "/hello"
+		};
+	};
+	rpc ListHello (ListHelloRequest) returns (common.BaseResultArray) {
+		option (google.api.http) = {
+			post: "/hello/list"
+			body: "*"
+		};
+	};
+}
+
+message SaveHelloRequest {}
+
+message DeleteHelloRequest {}
+
+message GetHelloRequest {}
+
+message ListHelloRequest {}
+
+message HelloDevPOList {
+  repeated HelloDevPO items = 1;
+}
+
+message HelloDevPO {
+	string SSN_ID = 1;
+	string SSN_DR = 2;
+	string SSN_NO = 3;
+	int64 SEQ_NO = 4;
+	string BLD_ID = 5;
+	int64 BLD_DT = 6;
+	string MOD_ID = 7;
+	int64 MOD_DT = 8;
+	bytes SYS_ID = 9;
+}
