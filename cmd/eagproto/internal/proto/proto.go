@@ -3,9 +3,9 @@ package proto
 import (
 	"github.com/spf13/cobra"
 
-	"github.com/biny-go/eagproto/cmd/eagproto/proto/add"
-	"github.com/biny-go/eagproto/cmd/eagproto/proto/client"
-	"github.com/biny-go/eagproto/cmd/eagproto/proto/server"
+	"github.com/biny-go/eagproto/cmd/eagproto/internal/proto/add"
+	"github.com/biny-go/eagproto/cmd/eagproto/internal/proto/client"
+	"github.com/biny-go/eagproto/cmd/eagproto/internal/proto/server"
 )
 
 // CmdProto represents the proto command.

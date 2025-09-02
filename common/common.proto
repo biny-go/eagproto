@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package common; //proto 包名
 
-// 格式说明:  "生成代码的Go导入路径;生成的Go包名(注意和package包名区分)" github.com/biny-go/eagproto/common
+// 格式说明:  "生成代码的Go导入路径;生成的Go包名(注意和package包名区分)" github.com/biny-go/eagproto/proto/common
 option go_package = "github.com/biny-go/eagproto/common;common";
 option java_multiple_files = true;
 option java_package = "com.eagproto.common";
