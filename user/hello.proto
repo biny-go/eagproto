@@ -7,7 +7,7 @@ option java_multiple_files = true;
 option java_package = "api";
 
 import "google/api/annotations.proto";
-import "common/common.proto"; // --proto_path=loong路径/proto/common/common.proto  proto文件包名+结构体：common.BaseResult
+import "common/common.proto"; // --proto_path=项目目录common/common.proto  proto文件包名+结构体：common.BaseResult
 
 service Hello {
 	rpc SaveHello (SaveHelloRequest) returns (common.BaseResult) {
