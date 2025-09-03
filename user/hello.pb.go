@@ -4,17 +4,16 @@
 // 	protoc        v4.25.4
 // source: user/hello.proto
 
-package api
+package user
 
 import (
-	reflect "reflect"
-	sync "sync"
-	unsafe "unsafe"
-
 	common "github.com/biny-go/eagproto/common"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	reflect "reflect"
+	sync "sync"
+	unsafe "unsafe"
 )
 
 const (
@@ -168,27 +167,27 @@ func (*ListHelloRequest) Descriptor() ([]byte, []int) {
 	return file_user_hello_proto_rawDescGZIP(), []int{3}
 }
 
-type HelloDevPOList struct {
+type HelloPOList struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Items         []*HelloDevPO          `protobuf:"bytes,1,rep,name=items,proto3" json:"items,omitempty"`
+	Items         []*HelloPO             `protobuf:"bytes,1,rep,name=items,proto3" json:"items,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *HelloDevPOList) Reset() {
-	*x = HelloDevPOList{}
+func (x *HelloPOList) Reset() {
+	*x = HelloPOList{}
 	mi := &file_user_hello_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *HelloDevPOList) String() string {
+func (x *HelloPOList) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*HelloDevPOList) ProtoMessage() {}
+func (*HelloPOList) ProtoMessage() {}
 
-func (x *HelloDevPOList) ProtoReflect() protoreflect.Message {
+func (x *HelloPOList) ProtoReflect() protoreflect.Message {
 	mi := &file_user_hello_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -200,47 +199,39 @@ func (x *HelloDevPOList) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use HelloDevPOList.ProtoReflect.Descriptor instead.
-func (*HelloDevPOList) Descriptor() ([]byte, []int) {
+// Deprecated: Use HelloPOList.ProtoReflect.Descriptor instead.
+func (*HelloPOList) Descriptor() ([]byte, []int) {
 	return file_user_hello_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *HelloDevPOList) GetItems() []*HelloDevPO {
+func (x *HelloPOList) GetItems() []*HelloPO {
 	if x != nil {
 		return x.Items
 	}
 	return nil
 }
 
-type HelloDevPO struct {
+type HelloPO struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	SSN_ID        string                 `protobuf:"bytes,1,opt,name=SSN_ID,json=SSNID,proto3" json:"SSN_ID,omitempty"`
-	SSN_DR        string                 `protobuf:"bytes,2,opt,name=SSN_DR,json=SSNDR,proto3" json:"SSN_DR,omitempty"`
-	SSN_NO        string                 `protobuf:"bytes,3,opt,name=SSN_NO,json=SSNNO,proto3" json:"SSN_NO,omitempty"`
-	SEQ_NO        int64                  `protobuf:"varint,4,opt,name=SEQ_NO,json=SEQNO,proto3" json:"SEQ_NO,omitempty"`
-	BLD_ID        string                 `protobuf:"bytes,5,opt,name=BLD_ID,json=BLDID,proto3" json:"BLD_ID,omitempty"`
-	BLD_DT        int64                  `protobuf:"varint,6,opt,name=BLD_DT,json=BLDDT,proto3" json:"BLD_DT,omitempty"`
-	MOD_ID        string                 `protobuf:"bytes,7,opt,name=MOD_ID,json=MODID,proto3" json:"MOD_ID,omitempty"`
-	MOD_DT        int64                  `protobuf:"varint,8,opt,name=MOD_DT,json=MODDT,proto3" json:"MOD_DT,omitempty"`
-	SYS_ID        []byte                 `protobuf:"bytes,9,opt,name=SYS_ID,json=SYSID,proto3" json:"SYS_ID,omitempty"`
+	SYS_ID        string                 `protobuf:"bytes,1,opt,name=SYS_ID,json=SYSID,proto3" json:"SYS_ID,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *HelloDevPO) Reset() {
-	*x = HelloDevPO{}
+func (x *HelloPO) Reset() {
+	*x = HelloPO{}
 	mi := &file_user_hello_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *HelloDevPO) String() string {
+func (x *HelloPO) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*HelloDevPO) ProtoMessage() {}
+func (*HelloPO) ProtoMessage() {}
 
-func (x *HelloDevPO) ProtoReflect() protoreflect.Message {
+func (x *HelloPO) ProtoReflect() protoreflect.Message {
 	mi := &file_user_hello_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -252,72 +243,16 @@ func (x *HelloDevPO) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use HelloDevPO.ProtoReflect.Descriptor instead.
-func (*HelloDevPO) Descriptor() ([]byte, []int) {
+// Deprecated: Use HelloPO.ProtoReflect.Descriptor instead.
+func (*HelloPO) Descriptor() ([]byte, []int) {
 	return file_user_hello_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *HelloDevPO) GetSSN_ID() string {
-	if x != nil {
-		return x.SSN_ID
-	}
-	return ""
-}
-
-func (x *HelloDevPO) GetSSN_DR() string {
-	if x != nil {
-		return x.SSN_DR
-	}
-	return ""
-}
-
-func (x *HelloDevPO) GetSSN_NO() string {
-	if x != nil {
-		return x.SSN_NO
-	}
-	return ""
-}
-
-func (x *HelloDevPO) GetSEQ_NO() int64 {
-	if x != nil {
-		return x.SEQ_NO
-	}
-	return 0
-}
-
-func (x *HelloDevPO) GetBLD_ID() string {
-	if x != nil {
-		return x.BLD_ID
-	}
-	return ""
-}
-
-func (x *HelloDevPO) GetBLD_DT() int64 {
-	if x != nil {
-		return x.BLD_DT
-	}
-	return 0
-}
-
-func (x *HelloDevPO) GetMOD_ID() string {
-	if x != nil {
-		return x.MOD_ID
-	}
-	return ""
-}
-
-func (x *HelloDevPO) GetMOD_DT() int64 {
-	if x != nil {
-		return x.MOD_DT
-	}
-	return 0
-}
-
-func (x *HelloDevPO) GetSYS_ID() []byte {
+func (x *HelloPO) GetSYS_ID() string {
 	if x != nil {
 		return x.SYS_ID
 	}
-	return nil
+	return ""
 }
 
 var File_user_hello_proto protoreflect.FileDescriptor
@@ -328,26 +263,16 @@ const file_user_hello_proto_rawDesc = "" +
 	"\x10SaveHelloRequest\"\x14\n" +
 	"\x12DeleteHelloRequest\"\x11\n" +
 	"\x0fGetHelloRequest\"\x12\n" +
-	"\x10ListHelloRequest\"8\n" +
-	"\x0eHelloDevPOList\x12&\n" +
-	"\x05items\x18\x01 \x03(\v2\x10.user.HelloDevPOR\x05items\"\xdb\x01\n" +
-	"\n" +
-	"HelloDevPO\x12\x15\n" +
-	"\x06SSN_ID\x18\x01 \x01(\tR\x05SSNID\x12\x15\n" +
-	"\x06SSN_DR\x18\x02 \x01(\tR\x05SSNDR\x12\x15\n" +
-	"\x06SSN_NO\x18\x03 \x01(\tR\x05SSNNO\x12\x15\n" +
-	"\x06SEQ_NO\x18\x04 \x01(\x03R\x05SEQNO\x12\x15\n" +
-	"\x06BLD_ID\x18\x05 \x01(\tR\x05BLDID\x12\x15\n" +
-	"\x06BLD_DT\x18\x06 \x01(\x03R\x05BLDDT\x12\x15\n" +
-	"\x06MOD_ID\x18\a \x01(\tR\x05MODID\x12\x15\n" +
-	"\x06MOD_DT\x18\b \x01(\x03R\x05MODDT\x12\x15\n" +
-	"\x06SYS_ID\x18\t \x01(\fR\x05SYSID2\xbd\x02\n" +
+	"\x10ListHelloRequest\"2\n" +
+	"\vHelloPOList\x12#\n" +
+	"\x05items\x18\x01 \x03(\v2\r.user.HelloPOR\x05items\" \n" +
+	"\aHelloPO\x12\x15\n" +
+	"\x06SYS_ID\x18\x01 \x01(\tR\x05SYSID2\xbd\x02\n" +
 	"\x05Hello\x12J\n" +
 	"\tSaveHello\x12\x16.user.SaveHelloRequest\x1a\x12.common.BaseResult\"\x11\x82\xd3\xe4\x93\x02\v:\x01*\"\x06/hello\x12K\n" +
 	"\vDeleteHello\x12\x18.user.DeleteHelloRequest\x1a\x12.common.BaseResult\"\x0e\x82\xd3\xe4\x93\x02\b*\x06/hello\x12E\n" +
 	"\bGetHello\x12\x15.user.GetHelloRequest\x1a\x12.common.BaseResult\"\x0e\x82\xd3\xe4\x93\x02\b\x12\x06/hello\x12T\n" +
-	"\tListHello\x12\x16.user.ListHelloRequest\x1a\x17.common.BaseResultArray\"\x16\x82\xd3\xe4\x93\x02\x10:\x01*\"\v/hello/listB\x15\n" +
-	"\x03apiP\x01Z\fuser/api;apib\x06proto3"
+	"\tListHello\x12\x16.user.ListHelloRequest\x1a\x17.common.BaseResultArray\"\x16\x82\xd3\xe4\x93\x02\x10:\x01*\"\v/hello/listB'Z%github.com/biny-go/eagproto/user;userb\x06proto3"
 
 var (
 	file_user_hello_proto_rawDescOnce sync.Once
@@ -367,13 +292,13 @@ var file_user_hello_proto_goTypes = []any{
 	(*DeleteHelloRequest)(nil),     // 1: user.DeleteHelloRequest
 	(*GetHelloRequest)(nil),        // 2: user.GetHelloRequest
 	(*ListHelloRequest)(nil),       // 3: user.ListHelloRequest
-	(*HelloDevPOList)(nil),         // 4: user.HelloDevPOList
-	(*HelloDevPO)(nil),             // 5: user.HelloDevPO
+	(*HelloPOList)(nil),            // 4: user.HelloPOList
+	(*HelloPO)(nil),                // 5: user.HelloPO
 	(*common.BaseResult)(nil),      // 6: common.BaseResult
 	(*common.BaseResultArray)(nil), // 7: common.BaseResultArray
 }
 var file_user_hello_proto_depIdxs = []int32{
-	5, // 0: user.HelloDevPOList.items:type_name -> user.HelloDevPO
+	5, // 0: user.HelloPOList.items:type_name -> user.HelloPO
 	0, // 1: user.Hello.SaveHello:input_type -> user.SaveHelloRequest
 	1, // 2: user.Hello.DeleteHello:input_type -> user.DeleteHelloRequest
 	2, // 3: user.Hello.GetHello:input_type -> user.GetHelloRequest

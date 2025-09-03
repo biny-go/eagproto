@@ -2,12 +2,10 @@ syntax = "proto3";
 
 package user;
 
-option go_package = "user/api;api";
-option java_multiple_files = true;
-option java_package = "api";
+option go_package = "github.com/biny-go/eagproto/user;user";
 
 import "google/api/annotations.proto";
-import "common/common.proto"; // --proto_path=项目目录common/common.proto  proto文件包名+结构体：common.BaseResult
+import "common/common.proto"; // --proto_path=eagproto路径/common/common.proto  proto文件包名+结构体：common.BaseResult
 
 service Hello {
 	rpc SaveHello (SaveHelloRequest) returns (common.BaseResult) {
@@ -42,11 +40,11 @@ message GetHelloRequest {}
 
 message ListHelloRequest {}
 
-message HelloDevPOList {
-  repeated HelloDevPO items = 1;
+message HelloPOList {
+	repeated HelloPO items = 1;
 }
 
-message HelloDevPO {
+message HelloPO {
 	string SSN_ID = 1;
 	string SSN_DR = 2;
 	string SSN_NO = 3;

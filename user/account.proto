@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "github.com/biny-go/eagproto/user;user";
+
+import "google/api/annotations.proto";
+import "common/common.proto"; // --proto_path=eagproto路径/common/common.proto  proto文件包名+结构体：common.BaseResult
+
+service Account {
+	rpc SaveAccount (SaveAccountRequest) returns (common.BaseResult) {
+		option (google.api.http) = {
+			post: "/account"
+			body: "*"
+		};
+	};
+	rpc DeleteAccount (DeleteAccountRequest) returns (common.BaseResult) {
+		option (google.api.http) = {
+			delete: "/account"
+		};
+	};
+	rpc GetAccount (GetAccountRequest) returns (common.BaseResult) {
+		option (google.api.http) = {
+			get: "/account"
+		};
+	};
+	rpc ListAccount (ListAccountRequest) returns (common.BaseResultArray) {
+		option (google.api.http) = {
+			post: "/account/list"
+			body: "*"
+		};
+	};
+}
+
+message SaveAccountRequest {}
+
+message DeleteAccountRequest {}
+
+message GetAccountRequest {}
+
+message ListAccountRequest {}
+
+message AccountPOList {
+	repeated AccountPO items = 1;
+}
+
+message AccountPO {
+	string SYS_ID = 1;
+	string Name = 2;
+	string Email = 3;
+}

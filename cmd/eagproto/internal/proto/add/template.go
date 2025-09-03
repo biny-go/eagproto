@@ -12,11 +12,9 @@ syntax = "proto3";
 package {{.Package}};
 
 option go_package = "{{.GoPackage}}";
-option java_multiple_files = true;
-option java_package = "{{.JavaPackage}}";
 
 import "google/api/annotations.proto";
-import "proto/common/common.proto"; // --proto_path=eagproto路径/proto/common/common.proto  proto文件包名+结构体：common.BaseResult
+import "common/common.proto"; // --proto_path=eagproto路径/common/common.proto  proto文件包名+结构体：common.BaseResult
 
 service {{.Service}} {
 	rpc Save{{.Service}} (Save{{.Service}}Request) returns (common.BaseResult) {
@@ -25,17 +23,17 @@ service {{.Service}} {
 			body: "*"
 		};
 	};
-	rpc Delete{{.Service}} (Delete{{.Service}}Request) returns (Delete{{.Service}}Reply) {
+	rpc Delete{{.Service}} (Delete{{.Service}}Request) returns (common.BaseResult) {
 		option (google.api.http) = {
 			delete: "/{{.ServicePath}}"
 		};
 	};
-	rpc Get{{.Service}} (Get{{.Service}}Request) returns (Get{{.Service}}Reply) {
+	rpc Get{{.Service}} (Get{{.Service}}Request) returns (common.BaseResult) {
 		option (google.api.http) = {
 			get: "/{{.ServicePath}}"
 		};
 	};
-	rpc List{{.Service}} (List{{.Service}}Request) returns (List{{.Service}}Reply) {
+	rpc List{{.Service}} (List{{.Service}}Request) returns (common.BaseResultArray) {
 		option (google.api.http) = {
 			post: "/{{.ServicePath}}/list"
 			body: "*"
@@ -44,16 +42,20 @@ service {{.Service}} {
 }
 
 message Save{{.Service}}Request {}
-message Save{{.Service}}Reply {}
 
 message Delete{{.Service}}Request {}
-message Delete{{.Service}}Reply {}
 
 message Get{{.Service}}Request {}
-message Get{{.Service}}Reply {}
 
 message List{{.Service}}Request {}
-message List{{.Service}}Reply {}
+
+message {{.Service}}POList {
+	repeated {{.Service}}PO items = 1;
+}
+
+message {{.Service}}PO {
+	string SYS_ID = 1;
+}
 `
 
 func (p *Proto) execute() ([]byte, error) {

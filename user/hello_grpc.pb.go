@@ -4,7 +4,7 @@
 // - protoc             v4.25.4
 // source: user/hello.proto
 
-package api
+package user
 
 import (
 	context "context"

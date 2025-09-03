@@ -3,9 +3,9 @@
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "zxh404.vscode-proto3"
   },
-  "protoc.path": "/usr/local/bin/protoc",
+  "protoc.path": "C:\\work\\go\\pkg\\bin\\protoc-25.4-win64\\bin\\protoc.exe",
   "protoc.options": [
     "--proto_path=${workspaceFolder}",
-    "--proto_path=/usr/local/include"
+    "--proto_path=${workspaceFolder}/third_party"
   ]
 }

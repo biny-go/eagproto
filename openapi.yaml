@@ -3,14 +3,14 @@
 
 openapi: 3.0.3
 info:
-    title: Hello API
+    title: Account API
     version: 0.0.1
 paths:
-    /hello:
+    /account:
         get:
             tags:
-                - Hello
-            operationId: Hello_GetHello
+                - Account
+            operationId: Account_GetAccount
             responses:
                 "200":
                     description: OK
@@ -26,13 +26,13 @@ paths:
                                 $ref: '#/components/schemas/Status'
         post:
             tags:
-                - Hello
-            operationId: Hello_SaveHello
+                - Account
+            operationId: Account_SaveAccount
             requestBody:
                 content:
                     application/json:
                         schema:
-                            $ref: '#/components/schemas/SaveHelloRequest'
+                            $ref: '#/components/schemas/SaveAccountRequest'
                 required: true
             responses:
                 "200":
@@ -49,8 +49,8 @@ paths:
                                 $ref: '#/components/schemas/Status'
         delete:
             tags:
-                - Hello
-            operationId: Hello_DeleteHello
+                - Account
+            operationId: Account_DeleteAccount
             responses:
                 "200":
                     description: OK
@@ -64,16 +64,16 @@ paths:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/Status'
-    /hello/list:
+    /account/list:
         post:
             tags:
-                - Hello
-            operationId: Hello_ListHello
+                - Account
+            operationId: Account_ListAccount
             requestBody:
                 content:
                     application/json:
                         schema:
-                            $ref: '#/components/schemas/ListHelloRequest'
+                            $ref: '#/components/schemas/ListAccountRequest'
                 required: true
             responses:
                 "200":
@@ -124,10 +124,10 @@ components:
                     description: The type of the serialized message.
             additionalProperties: true
             description: Contains an arbitrary serialized message along with a @type that describes the type of the serialized message.
-        ListHelloRequest:
+        ListAccountRequest:
             type: object
             properties: {}
-        SaveHelloRequest:
+        SaveAccountRequest:
             type: object
             properties: {}
         Status:
@@ -147,4 +147,4 @@ components:
                     description: A list of messages that carry the error details.  There is a common set of message types for APIs to use.
             description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
 tags:
-    - name: Hello
+    - name: Account
